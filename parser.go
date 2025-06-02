@@ -9,7 +9,7 @@ import (
 )
 
 func parseVerse(book string, startVerse string, endVerse string) {
-	file, err := os.Open(Config.translationsDir + "/" + Config.translation + "/" + book + ".usx")
+	file, err := os.Open(Config.TranslationsDir + "/" + Config.Translation + "/" + book + ".usx")
 	if err != nil {
 		panic(err)
 	}
@@ -56,7 +56,7 @@ parsing:
 						verseNumber = attr.Value
 					}
 				}
-				if startOfVerse && inCorrectVerses && Config.showVerseNumbers {
+				if startOfVerse && inCorrectVerses && Config.ShowVerseNumbers {
 					fmt.Print(subScriptNumber(verseNumber))
 					initialSpace = true
 				}
@@ -66,7 +66,7 @@ parsing:
 			case "note":
 				if inCorrectVerses {
 					inNote = true
-					if Config.showNotes {
+					if Config.ShowNotes {
 						fmt.Print(superScriptNumber(noteCounter + 1))
 						notes = append(notes, "")
 					}
@@ -99,13 +99,13 @@ parsing:
 			if inCorrectVerses && !inNote {
 				initialSpace = false
 				fmt.Print(text)
-			} else if inCorrectVerses && inNote && Config.showNotes {
+			} else if inCorrectVerses && inNote && Config.ShowNotes {
 				notes[noteCounter] += text
 			}
 		}
 	}
 	fmt.Println()
-	if Config.showNotes {
+	if Config.ShowNotes {
 		fmt.Println()
 		for i := range notes {
 			fmt.Println(superScriptNumber(i+1) + notes[i])

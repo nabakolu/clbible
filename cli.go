@@ -12,8 +12,8 @@ func cli() {
 	var yesNums bool
 	var noNums bool
 
-	flag.StringVar(&Config.translation, "translation", Config.translation, "Trannslation used")
-	flag.StringVar(&Config.translationsDir, "translationsDir", Config.translationsDir, "Directory, where the translations reside in")
+	flag.StringVar(&Config.Translation, "translation", Config.Translation, "Trannslation used")
+	flag.StringVar(&Config.TranslationsDir, "translationsDir", Config.TranslationsDir, "Directory, where the translations reside in")
 	flag.BoolVar(&version, "version", false, "Print version")
 	flag.BoolVar(&yesNotes, "yesNotes", false, "Show notes")
 	flag.BoolVar(&noNotes, "noNotes", false, "Don't show notes")
@@ -23,16 +23,16 @@ func cli() {
 	flag.Parse()
 
 	if yesNotes {
-		Config.showNotes = true
+		Config.ShowNotes = true
 	}
 	if noNotes {
-		Config.showNotes = false
+		Config.ShowNotes = false
 	}
 	if yesNums {
-		Config.showVerseNumbers = true
+		Config.ShowVerseNumbers = true
 	}
 	if noNums {
-		Config.showVerseNumbers = false
+		Config.ShowVerseNumbers = false
 	}
 
 

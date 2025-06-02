@@ -1,10 +1,17 @@
 package main
 
+import (
+	"encoding/json"
+	"fmt"
+	"os"
+	"path/filepath"
+)
+
 type config struct {
-	translationsDir  string
-	translation      string
-	showVerseNumbers bool
-	showNotes        bool
+	TranslationsDir  string `json:"translationsDir,omitempty"`
+	Translation      string `json:"translation,omitempty"`
+	ShowVerseNumbers bool   `json:"showVerseNumbers,omitempty"`
+	ShowNotes        bool   `json:"showNotes,omitempty"`
 }
 
 var Config config
@@ -12,8 +19,29 @@ var Config config
 var Version = "0.1"
 
 func readConfig() {
-	Config.translation = "ELB"
-	Config.translationsDir = "./translations/"
-	Config.showVerseNumbers = true
-	Config.showNotes = false
+	Config.Translation = "ELB"
+	Config.TranslationsDir = "./translations/"
+	Config.ShowVerseNumbers = true
+	Config.ShowNotes = false
+	// Get the home directory
+	homeDir, err := os.UserHomeDir()
+	if err != nil {
+		return
+	}
+
+	// Path to the config file
+	configFilePath := filepath.Join(homeDir, ".clbible", "config.json")
+
+	// Open the config file
+	file, err := os.Open(configFilePath)
+	if err != nil {
+		return
+	}
+	defer file.Close()
+
+	// Parse the JSON config into the Config variable
+	decoder := json.NewDecoder(file)
+	if err := decoder.Decode(&Config); err != nil {
+		fmt.Println("unable to parse config file: %w", err)
+	}
 }
