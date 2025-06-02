@@ -9,6 +9,8 @@ type config struct {
 
 var Config config
 
+var Version = "0.1"
+
 func readConfig() {
 	Config.translation = "ELB"
 	Config.translationsDir = "./translations/"
