@@ -20,7 +20,6 @@ var Version = "0.1"
 
 func readConfig() {
 	Config.Translation = "ELB"
-	Config.TranslationsDir = "./translations/"
 	Config.ShowVerseNumbers = true
 	Config.ShowNotes = false
 	// Get the home directory
@@ -28,6 +27,7 @@ func readConfig() {
 	if err != nil {
 		return
 	}
+	Config.TranslationsDir = filepath.Join(homeDir, ".clbible", "translations")
 
 	// Path to the config file
 	configFilePath := filepath.Join(homeDir, ".clbible", "config.json")
