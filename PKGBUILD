@@ -1,6 +1,6 @@
 # Maintainer: Lukas Nabakowski lnabakowski at mailo.com
 pkgname=clbible
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Query bible verses"
 arch=('any')
