@@ -16,7 +16,7 @@ type config struct {
 
 var Config config
 
-var Version = "0.1"
+var Version = "0.2"
 
 func readConfig() {
 	Config.Translation = "ELB"
@@ -44,4 +44,7 @@ func readConfig() {
 	if err := decoder.Decode(&Config); err != nil {
 		fmt.Println("unable to parse config file: %w", err)
 	}
+
+	// Expand ~, $HOME, or other env variables
+	Config.TranslationsDir = os.ExpandEnv(Config.TranslationsDir)
 }
