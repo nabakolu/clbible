@@ -32,7 +32,11 @@ You can specify the translation you want to use with the `-translation` option
 
 ## Installation
 
-You can install clbible either manually, or if you use an Arch Linux system with the PKGBUILD.
+You can install clbible either with go, manually, or if you use an Arch Linux system with the PKGBUILD.
+
+### Installation with go
+
+To install clbible with go, run the command `go install github.com/nabakolu/clbible@latest`.
 
 ### Manual Installation
 
